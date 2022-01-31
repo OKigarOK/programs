@@ -10,9 +10,9 @@ function showVerticalMessage(string) {
     }
     for (let letter of string) {
         row += `\n ${letter} \n`;
-        }
-    console.log(row);
     }
+    console.log(row);
+}
 
 let str = 'марафон';
 showVerticalMessage(str);
