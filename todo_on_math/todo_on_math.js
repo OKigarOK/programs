@@ -1,7 +1,7 @@
 const list = [
     {
         name: 'Create a post',
-        status: 'In progress',
+        status: 'In Progress',
         priority: 'Low',
     },
     {
@@ -19,26 +19,23 @@ const list = [
 const STATUS = {
     TO_DO: 'To Do',
     IN_PROGRESS: 'In Progress',
-    DONE: 'Done:',
+    DONE: 'Done',
     DEFAULT: 'To Do'
 }
 
 const PRIORITY = {
     LOW_PRIORITY: 'Low',
     HIGH_PRIORITY: 'High',
-    DEFAULT: 'None'
+    DEFAULT: 'Low'
 }
 
-const NEW_TASK = {
-    name: '',
-    status: STATUS.DEFAULT,
-    priority: PRIORITY.DEFAULT
-}
-
-function addTask(task, priority = PRIORITY.DEFAULT) {
+function addTask(task) {
+    const NEW_TASK = {
+        name: task,
+        status: STATUS.DEFAULT,
+        priority: PRIORITY.DEFAULT
+    }
     list.push(NEW_TASK);
-    NEW_TASK.name = task;
-    NEW_TASK.priority = priority;
 }
 
 function deleteTask (task) {
@@ -51,32 +48,47 @@ function changeStatus (task, newStatus) {
     list[indexOfCurrentTask].status = newStatus;
 }
 
-function showList() {
+function showBy(isSort) {
+    let key;
+    let highPriorityTasks = '';
+    let lowPriorityTasks = '';
     let todoTasks = '';
     let inProgressTasks = '';
     let doneTasks = '';
     let noTasks = `\n -`;
-    for (let key of list) {
-        if (key.status === STATUS.IN_PROGRESS) {
-            todoTasks += `\n "${key.name}"`;
-        } else if (key.status === STATUS.IN_PROGRESS) {
-            inProgressTasks += `\n "${key.name}"`;
-        } else if (key.status === STATUS.DONE) {
-            doneTasks += `\n "${key.name}"`;
+    if (isSort === 'priority') {
+        for (key of list) {
+            if (key.priority === PRIORITY.HIGH_PRIORITY) {
+                highPriorityTasks += `\n "${key.name}"`;
+            } else if (key.priority === PRIORITY.LOW_PRIORITY) {
+                lowPriorityTasks += `\n "${key.name}"`;
+            }
         }
+        console.log(PRIORITY.HIGH_PRIORITY + ':' + (highPriorityTasks || noTasks));
+        console.log(PRIORITY.LOW_PRIORITY + ':' + (lowPriorityTasks || noTasks));
+    } else if (isSort === 'status') {
+        for (key of list) {
+            if (key.status === STATUS.TO_DO) {
+                todoTasks += `\n "${key.name}"`;
+            } else if (key.status === STATUS.IN_PROGRESS) {
+                inProgressTasks += `\n "${key.name}"`;
+            } else if (key.status === STATUS.DONE) {
+                doneTasks += `\n "${key.name}"`;
+            }
+        }
+        console.log(STATUS.TO_DO + ':' + (todoTasks || noTasks));
+        console.log(STATUS.IN_PROGRESS + ':' + (inProgressTasks || noTasks));
+        console.log(STATUS.DONE + ':' + (doneTasks || noTasks));
     }
-    console.log(STATUS.TO_DO + (todoTasks || noTasks));
-    console.log(STATUS.IN_PROGRESS + (inProgressTasks || noTasks));
-    console.log(STATUS.DONE + (doneTasks || noTasks));
 }
-console.log(list);
-showList()
-
-addTask('Hello')
-console.log(list);
-
-deleteTask('Say Hi')
-console.log(list);
-
-changeStatus('Hello', 'Done')
-console.log(list);
+// addTask('Hello')
+// addTask('Buy a beer')
+// addTask('Walk a dog')
+// deleteTask('Say Hi')
+// deleteTask('Test')
+// deleteTask('Hello')
+// deleteTask('Create a post')
+// changeStatus('Hello', 'Done')
+// changeStatus('Hello', 'In Progress')
+showBy('status')
+showBy('priority')
