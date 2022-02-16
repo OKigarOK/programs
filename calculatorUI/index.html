@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<style>
+    button {
+        display: flex;
+        width: 69px;
+        height: 72px;
+        border-radius: 24px;
+        color: #FFFFFF;
+        margin-top: 16px;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 32px;
+        font-weight: 400;
+        /*border: none;*/
+    }
+    button:hover {
+        cursor: pointer;
+    }
+    .button-reset {
+        width: 153px;
+    }
+    .button-0 {
+        width: 238px;
+    }
+    .color-calculation {
+        background-color: #4B5EFC;
+    }
+    .color-numbers {
+        background-color: #2E2F38;
+    }
+    .color-reset {
+        background-color: #4E505F;
+    }
+    .container {
+        box-sizing: border-box;
+        width: 364px;
+        height: 100%;
+        padding: 21px 20px 25px 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: black;
+    }
+    .output {
+        color: #FFFFFF;
+        text-align: right;
+        width: 324px;
+        height: 100%;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 96px;
+        line-height: 1;
+        font-weight: 300;
+    }
+    .backspace-button {
+        font-family: 'Material Icons',sans-serif;
+    }
+</style>
+
+<body>
+<div class='container'>
+    <div class='output'>0</div>
+    <div><button class='reset color-reset button-reset'>C</button></div>
+    <div>
+        <button class='backspace color-numbers backspace-button'>
+            <img src="Union.svg" alt="del">
+        </button>
+    </div>
+    <div><button class='operand color-calculation'>&#247</button></div>
+    <div><button class='number color-numbers'>7</button></div>
+    <div><button class='number color-numbers'>8</button></div>
+    <div><button class='number color-numbers'>9</button></div>
+    <div><button class='operand color-calculation'>&#215</button></div>
+    <div><button class='number color-numbers'>4</button></div>
+    <div><button class='number color-numbers'>5</button></div>
+    <div><button class='number color-numbers'>6</button></div>
+    <div><button class='operand color-calculation'>–</button></div>
+    <div><button class='number color-numbers'>1</button></div>
+    <div><button class='number color-numbers'>2</button></div>
+    <div><button class='number color-numbers'>3</button></div>
+    <div><button class='operand color-calculation'>+</button></div>
+    <div><button class='number color-numbers button-0'>0</button></div>
+    <div><button class='result color-calculation'>=</button></div>
+</div>
+    <script src="main.js"></script>
+</body>
+</html>
