@@ -1,21 +1,3 @@
-function Calc(action, a, b) {
-    const isNotValid = (typeof a !== 'number') || (typeof b !== 'number');
-    const operations = {
-        'sub': a - b,
-        'sum': a + b,
-        'multi': a * b,
-        'div': a / b,
-        // 'deg': a ** b,
-        // 'rem': a % b,
-    }
-    if (isNotValid) {
-        return 'Error';
-    } else if (action in operations) {
-        return operations[action];
-    }
-    return 'unknown operation';
-}
-
 const numbers = document.getElementsByClassName('number')
 const reset = document.querySelector('.reset')
 const output = document.querySelector('.output')
@@ -36,22 +18,31 @@ for (let operand of operands) {
     operand.addEventListener('click', newOperand)
 }
 
+function correctFontSize() {
+    let contentLength = output.textContent.length;
+    if (contentLength > 9) {
+        output.style.fontSize = '32px'
+    } else if (contentLength > 5) {
+        output.style.fontSize = '64px'
+    } else {
+        output.style.fontSize = '96px'
+    }
+}
+
 function getResult() {
     let str = output.textContent;
     let res = str.split(/[×÷–+]/)
     output.textContent = Calc(currentOperand, Number(res[0]), Number(res[1]));
+    correctFontSize();
 }
 
 function newOperand() {
-    // let str = output.textContent;
-    // if (Number(str[str.length-1])) {
-    //     output.textContent += this.textContent
-    // } else {
-    //     output.textContent[output.textContent.length-1] = this.textContent;
-    // }
-
-    output.textContent += this.textContent
-
+    let str = output.textContent;
+    if (Number(str[str.length-1]) || (str[str.length-1] === '0')) {
+        output.textContent += this.textContent;
+    } else {
+        output.textContent = str.slice(0,str.length-1) + this.textContent;
+    }
     switch (this.textContent) {
         case '×':
             currentOperand = 'multi'
@@ -79,10 +70,12 @@ function deleteLastElement() {
         output.textContent = output.textContent.substring(0, str.length - 1);
         output.textContent = str.substring(0, str.length - 1)
     }
+    correctFontSize();
 }
 
 function resetAll() {
     output.textContent = '0';
+    correctFontSize();
 }
 
 function showMe() {
@@ -91,8 +84,23 @@ function showMe() {
     } else {
         output.textContent += this.textContent
     }
+    correctFontSize();
 }
 
-
-
-
+function Calc(action, a, b) {
+    console.log(b);
+    const isNotValid = ((b == 0) && (action === 'div') ||
+        (typeof a !== 'number') || (a !== a) ||
+        (typeof b !== 'number') || (b !== b));
+    const operations = {
+        'sub': a - b,
+        'sum': a + b,
+        'multi': a * b,
+        'div': a / b,
+    }
+    if (isNotValid) {
+        return 'Error';
+    } else if (action in operations) {
+        return operations[action];
+    }
+}
