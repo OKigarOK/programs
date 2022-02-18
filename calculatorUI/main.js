@@ -65,7 +65,6 @@ function deleteLastElement() {
     if (output.textContent.length === 1) {
         output.textContent = '0';
     } else {
-        console.log('delete');
         let str = output.textContent;
         output.textContent = output.textContent.substring(0, str.length - 1);
         output.textContent = str.substring(0, str.length - 1)
@@ -79,16 +78,20 @@ function resetAll() {
 }
 
 function showMe() {
-    if (output.textContent === '0') {
+    let str = output.textContent;
+    if (str === '0') {
         output.textContent = this.textContent
+    } else if ((str[str.length - 1] === '0') &&
+        ((str[str.length - 2] === '×') || (str[str.length - 2] === '÷') ||
+        (str[str.length - 2] === '–') || (str[str.length - 2] === '+'))) {
+        output.textContent = str.substring(0, str.length - 1) + this.textContent;
     } else {
-        output.textContent += this.textContent
+        output.textContent += this.textContent;
     }
     correctFontSize();
 }
 
 function Calc(action, a, b) {
-    console.log(b);
     const isNotValid = ((b == 0) && (action === 'div') ||
         (typeof a !== 'number') || (a !== a) ||
         (typeof b !== 'number') || (b !== b));
@@ -99,7 +102,8 @@ function Calc(action, a, b) {
         'div': a / b,
     }
     if (isNotValid) {
-        return 'Error';
+        setTimeout(() => output.textContent = '0', 1000);
+        return 'ERROR';
     } else if (action in operations) {
         return operations[action];
     }
