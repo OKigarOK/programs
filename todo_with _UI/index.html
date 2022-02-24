@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <form>
+        <p>HIGH</p>
+        <div id="HIGH" class="input_block">
+            <input class="block_content" type="text" id="HIGH_PRIORITY" placeholder="Добавить важных дел">
+            <button class="button_size" id="addHighTask">&#10010</button>
+        </div>
+        <div class="output_block">
+            <div class="checkbox_size">
+                <div class="round">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="block_content">Вот вам и супер интересная тема.
+                Вы наверняка заметили что ваши файлы с кодом становятся все объемнее, что хочется
+                вынести некоторые вещи куда-то за пределы основной программы.
+            </div>
+            <div>
+                <button class="delete button_size">&#10006</button>
+            </div>
+        </div>
+
+        <div class="output_block">
+            <div class="checkbox_size">
+                <div class="round">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="block_content">Сверстать этот TODO list</div>
+            <div>
+                <button class="delete button_size">&#10006</button>
+            </div>
+        </div>
+
+        <div class="output_block" style="background-color: #F4F4F4">
+            <div class="checkbox_size" style="background-color: #F4F4F4">
+                <div class="round">
+                    <div class="round_in"></div>
+                </div>
+            </div>
+            <div class="block_content">Начать делать задачу</div>
+            <div>
+                <button class="delete button_size" style="background-color: #F4F4F4">&#10006</button>
+            </div>
+        </div>
+
+    </form>
+    <form>
+        <p>LOW</p>
+        <div id="LOW" class="input_block">
+            <input class="block_content" type="text" id="LOW_PRIORITY" placeholder="Добавить">
+            <button class="button_size" id="addLowTask">&#10010</button>
+        </div>
+
+        <div class="output_block">
+            <div class="checkbox_size">
+                <div class="round">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="block_content">Посмотреть ютубчик</div>
+            <div>
+                <button class="delete button_size">&#10006</button>
+            </div>
+        </div>
+    </form>
+
+<script src="view.js"></script>
+
+</div>
+</body>
+</html>
