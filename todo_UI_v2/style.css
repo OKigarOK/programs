@@ -1,0 +1,121 @@
+body {
+    background-color: #E5E5E5;
+}
+
+.common_container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    color: black;
+    height: 100%;
+    width: 476px;
+    padding: 8px;
+    font-size: 18px;
+    font-family: "Roboto Thin", serif;
+}
+
+p {
+    text-align: center;
+}
+
+p, a, input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+button:hover, .checkbox_size:hover {
+    cursor: pointer;
+}
+
+input, button {
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: none;
+    margin: 5px 12px;
+    padding: 0;
+}
+
+button {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+}
+
+.input_content {
+    width: 460px;
+    height: 45px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.background_done {
+    background-color: #F4F4F4;
+}
+
+.content {
+    width: 460px;
+    min-height: 45px;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.task {
+    width: 370px;
+    height: 100%;
+    display: inline-block;
+    margin: 12px 0;
+}
+
+.checkbox_size {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin: 12px;
+    padding: 0;
+}
+
+.round {
+    background-color: inherit;
+    box-sizing: border-box;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    border: 1px solid grey;
+}
+
+.round_in {
+    box-sizing: border-box;
+    width: 15px;
+    height: 15px;
+    margin: 2px;
+    border-radius: 50%;
+    background-color: #C4C4C4;
+}
+
+.add_task {
+    width: 45px;
+    box-sizing: border-box;
+}
+
+.delete_task {
+    background-color: inherit;
+    width: 45px;
+    box-sizing: border-box;
+}
+
+.new_task {
+    width: 100%;
+    display: inline-block;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo_v2</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="common_container">
+    <p>HIGH</p>
+    <form class="input_content">
+        <input id="newTask" class="new_task" type="text" placeholder="Добавить важных дел">
+        <button class="add_task" id="addTask" type="submit">&#10010</button>
+    </form>
+    <div id="tasksContainer"></div>
+    <p>LOW</p>
+    <form class="input_content">
+        <input id="newTaskLow" class="new_task" type="text" placeholder="Добавить">
+        <button class="add_task" id="addTaskLow" type="submit">&#10010</button>
+    </form>
+    <div id="tasksContainerLow"></div>
+</div>
+<script src="test.js"></script>
+</body>
+</html>
