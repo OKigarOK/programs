@@ -15,88 +15,52 @@
 <div class="container_1">
     <div class="container_1_size">
         <form class="search">
-            <div><input type="text" placeholder="Aktobe"></div>
-            <div><img class="search_img" src="./img/640px-Google_Magnifying_Glass.svg.png"></div>
+            <div><input type="text" onkeyup="this.value = this.value.replace(/[^a-z\s]/gi, '');" placeholder="Enter the city (only english)"></div>
+            <button><img class="search_img" src="./img/640px-Google_Magnifying_Glass.svg.png"></button>
         </form>
         <div class="display">
             <div id="Now" class="tab_content" style="display: flex;">
-                <div class="now_temperature">14<span>&deg</span></div>
-                <div class="now_weather_icon"><img style="width: 78px;" src="./img/cloud.png"></div>
+                <div class="now_temperature">t<span>&deg</span></div>
+                <div class="now_weather_icon"></div>
                 <div class="now_likes_city">
-                    <div class="">Aktobe</div>
-                    <div class="now_likes_shape">&#9825</div>
+                    <div class="now_city"></div>
+                    <div id="add_city" class="now_likes_shape">&#9825</div>
                 </div>
             </div>
             <div id="Details" class="tab_content">
-                <div class="current_city">Aktobe</div>
+                <div class="current_city details_current_city">-</div>
                 <div class="details_container">
                     <ul>
-                        <li>Temperature: 14<span>&deg</span></li>
+                        <li>Temperature: <span class="current_temperature">-</span><span>&deg</span></li>
                         <br>
-                        <li>Feels like: 10<span>&deg</span></li>
+                        <li>Feels like: <span class="current_feels_like">-</span><span>&deg</span></li>
                         <br>
-                        <li>Weather: Clouds</li>
+                        <li>Weather: <span class="current_weather">-</span></li>
                         <br>
-                        <li>Sunrise: 03:21</li>
+                        <li>Sunrise: <span class="current_sunrise">-</span></li>
                         <br>
-                        <li>Sunset: 18:54</li>
+                        <li>Sunset: <span class="current_sunset">-</span></li>
                     </ul>
                 </div>
             </div>
             <div id="Forecast" class="tab_content">
-                <div class="current_city">Aktobe</div>
+                <div id="forecast_city" class="current_city">-</div>
                 <div class="forecast_container">
                     <ul>
                         <li>
                             <div class="forecast_container_items">
                                 <ul>
                                     <li class="forecast_container_item" style="margin-bottom: 30px">
-                                        <div>17 May</div>
-                                        <div>12:00</div>
+                                        <div class="forecast_date">-</div>
+                                        <div class="forecast_time">-</div>
                                     </li>
                                     <li class="forecast_container_item">
-                                        <div>Temperature: 13<span>&deg</span></div>
-                                        <div>Rain</div>
+                                        <div class="forecast_temperature">Temperature: -<span>&deg</span></div>
+                                        <div class="forecast_weather">-</div>
                                     </li>
                                     <li class="forecast_container_item">
-                                        <div>Feels like: 10<span>&deg</span></div>
-                                        <div><img style="width: 31px" src="./img/rain.png"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="forecast_container_items">
-                                <ul>
-                                    <li class="forecast_container_item" style="margin-bottom: 30px">
-                                        <div>17 May</div>
-                                        <div>15:00</div>
-                                    </li>
-                                    <li class="forecast_container_item">
-                                        <div>Temperature: 13<span>&deg</span></div>
-                                        <div>Rain</div>
-                                    </li>
-                                    <li class="forecast_container_item">
-                                        <div>Feels like: 10<span>&deg</span></div>
-                                        <div><img style="width: 31px" src="./img/rain.png"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="forecast_container_items">
-                                <ul>
-                                    <li class="forecast_container_item" style="margin-bottom: 30px">
-                                        <div>17 May</div>
-                                        <div>18:00</div>
-                                    </li>
-                                    <li class="forecast_container_item">
-                                        <div>Temperature: 13<span>&deg</span></div>
-                                        <div>Rain</div>
-                                    </li>
-                                    <li class="forecast_container_item">
-                                        <div>Feels like: 10<span>&deg</span></div>
-                                        <div><img style="width: 31px" src="./img/rain.png"></div>
+                                        <div class="forecast_feels_like">Feels like: -<span>&deg</span></div>
+                                        <div class="forecast_icon"><img style="width: 31px" src="./img/rain.png"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -105,27 +69,16 @@
                 </div>
             </div>
             <div class="tab">
-                <button class="tab_links active" onclick="openCity(event, 'Now')">Now</button>
-                <button class="tab_links" onclick="openCity(event, 'Details')">Details</button>
-                <button class="tab_links" onclick="openCity(event, 'Forecast')">Forecast</button>
+                <button class="tab_links active" onclick="changeCityTab(event, 'Now')">Now</button>
+                <button class="tab_links" onclick="changeCityTab(event, 'Details')">Details</button>
+                <button class="tab_links" onclick="changeCityTab(event, 'Forecast')">Forecast</button>
             </div>
         </div>
         <div class="locations">
             <div class="added_location_head">Added Locations:</div>
             <div class="added_location_list">
                 <div class="location_list">
-                    <ul>
-                        <li>Amur</li>
-                        <br>
-                        <li>Samara</li>
-                        <br>
-                        <li>Bali</li>
-                        <br>
-                        <li>Dane</li>
-                        <br>
-                        <li>Kilo</li>
-                        <br>
-                        <li>Nur-Sultan</li>
+                    <ul id="location_list">
                     </ul>
                 </div>
             </div>
